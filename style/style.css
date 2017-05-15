@@ -1,0 +1,78 @@
+
+form h3 {
+    margin-bottom: 40px;
+}
+
+.form-center {
+    text-align: center;
+    margin: auto;
+    width: 50%;
+    padding-top: 150px;
+}
+
+.div-login {
+    margin-bottom: 25px;
+}
+
+.form-login {
+    margin-left: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.div-button {
+    /*margin-left: 230px;*/
+}
+
+.btn-login {
+    width: 140px;
+    background-color: rgba(138, 43, 226, 0.6);
+    color: #fff;
+    margin-bottom: 25px;
+    margin-right: 10px;
+    margin-left: 30px;
+}
+
+.btn-login:hover {
+    background-color: rgba(138, 43, 226, 0.9);
+}
+
+.btn-new-user {
+    margin-bottom: 25px;
+    margin-right: 10px;
+    color: rgba(0, 116, 217, 0.8);
+    background-color: white;
+}
+
+.btn-new-user:hover {
+    color: rgba(0, 116, 217, 1.0);
+}
+
+.btn-new-user:focus {
+    outline:none !important;
+}
+
+.label-retype {
+    margin-left: 10px;
+}
+
+.homepage {
+    padding: 50px;
+}
+
+.homepage-user {
+    font-weight: bold;
+}
+
+.text-help {
+    margin-left: 58px;
+    margin-top: 15px;
+    font-size: 15px;
+    color: red;
+}
+
+.div-message {
+    margin-top: 15px;
+    margin-left: 25px;
+    color: #ff2121;
+}
