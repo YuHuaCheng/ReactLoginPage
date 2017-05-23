@@ -2,7 +2,7 @@
  
 #### This is a login page app written in React / Redux, bind with mongodb express app to perform methods like user-login, new-user-create, and user info storage.     
 
-#### The project used a nice boilerplate from*Stephen Grider*'s fabulous Udemy course, https://www.udemy.com/react-redux/
+#### The project used a nice boilerplate from *Stephen Grider*'s fabulous Udemy course, https://www.udemy.com/react-redux/
 
  
 ### Requirements
