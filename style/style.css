@@ -71,6 +71,10 @@ form h3 {
     color: red;
 }
 
+.text-help-retype {
+    margin-left: 34px !important;
+}
+
 .div-message {
     margin-top: 15px;
     margin-left: 25px;

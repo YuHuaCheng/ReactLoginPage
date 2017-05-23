@@ -9,11 +9,18 @@ class Login extends Component {
         if (loginStatus === null){
             return null
         }
-        return loginStatus ? browserHistory.push('/home') : <h3>Login information is not correct.</h3>;
+        return loginStatus ? null : <h3>Login information is not correct.</h3>;
     }
 
     createNewUser(){
         browserHistory.push('/new_user')
+    }
+
+    componentWillUpdate() {
+        const { login_success } = this.props.loginStatus;
+        if (login_success){
+            browserHistory.push('/home');
+        }
     }
 
     render() {
