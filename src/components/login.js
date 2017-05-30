@@ -105,5 +105,6 @@ function mapStateToProps({ loginStatus}) {
 export default reduxForm({ // inject this object as props to Login component
     form: 'LoginForm',
     fields: ['username', 'password'],
+    touchOnBlur: false,
     validate: validate,
 }, mapStateToProps, { userLogin, toggleMessage, fetchingData })(Login);

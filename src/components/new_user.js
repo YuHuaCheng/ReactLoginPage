@@ -103,5 +103,6 @@ function mapStateToProps({ createStatus }) {
 export default reduxForm({ // inject this object as props to Login component
     form: 'CreateForm',
     fields: ['username', 'password', 'reType'],
+    touchOnBlur: false,
     validate: validate
 }, mapStateToProps, { userCreate, toggleMessage })(NewUser);
