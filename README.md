@@ -13,9 +13,9 @@
  
 ### Getting Started
 
-#### 1. Download mongodb image from 
+#### 1. Download mongodb image 
     
-https://github.com/dockerfile/mongodb
+    docker pull mongo
 
 #### 2. Clone mongodb express app project from 
 
