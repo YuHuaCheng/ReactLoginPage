@@ -22,7 +22,7 @@ class HomePage extends Component {
             <div className="homepage">
                 <div>Welcome to Home Page,<span className="homepage-user"> {username} </span></div>
                 <div>
-                    <button type="submit" className="btn btn-primary" onClick={userLogout}>Log Out</button>
+                    <button type="submit" className="btn btn-logout" onClick={userLogout}>Log Out</button>
                 </div>
             </div>
         )
