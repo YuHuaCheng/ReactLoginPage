@@ -6,7 +6,7 @@ export const USER_LOGOUT = 'USER_LOGOUT';
 export const TOGGLE_MESSAGE = 'TOGGLE_MESSAGE';
 export const IS_FETCHING = 'IS_FETCHING';
 
-const ROOT_URL = 'http://localhost:3000';
+const ROOT_URL = `http://${location.hostname}:3000`;
 const LOGIN_ROOT_URL = `${ROOT_URL}/login/find_user/`;
 const CREATE_ROOT_URL = `${ROOT_URL}/create/new_user`;
 
