@@ -13,23 +13,24 @@ class NewUser extends Component {
     }
 
     componentWillUpdate() {
-        const { create_success } = this.props.createStatus;
-        if (create_success){
+        const { login_success } = this.props.loginStatus;
+        if (login_success){
             browserHistory.push('/home');
         }
 
         const { submitting, toggleMessage } = this.props;
-        if (submitting && create_success === false){
+        if (submitting && login_success === false){
             toggleMessage(true)
         }
     }
 
     render() {
+        localStorage.clear(); // clear all localStorage whenever visiting here
         const handleSubmit = this.props.handleSubmit;
         const { fields: { username, password, reType }, userCreate } = this.props;
-        const { create_success } = this.props.createStatus;
+        const { login_success } = this.props.loginStatus;
 
-        const message = create_success ? '' :
+        const message = login_success ? '' :
             <p>
                 Oops! Username <span className="message-username">{username.value}</span> has existed. <br/>
                 Please come up with a different one.
@@ -96,8 +97,8 @@ function validate(values) {
     return errors
 }
 
-function mapStateToProps({ createStatus }) {
-    return { createStatus }
+function mapStateToProps({ loginStatus }) {
+    return { loginStatus }
 }
 
 export default reduxForm({ // inject this object as props to Login component

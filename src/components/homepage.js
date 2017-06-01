@@ -14,14 +14,18 @@ class HomePage extends Component {
         };
     }
 
+    backToLogin(login_success){
+        if (login_success !== true) {browserHistory.push('/login')}
+    }
+
     componentWillMount() {
         if (localStorage.getItem(HOMEPAGE_LOCAL_STORAGE)){
-            console.log('something in local storage');
-            const {login_success, username} = JSON.parse(localStorage.getItem(HOMEPAGE_LOCAL_STORAGE));
+            const { login_success, username } = JSON.parse(localStorage.getItem(HOMEPAGE_LOCAL_STORAGE));
+            this.backToLogin(login_success);
             this.setState({login_success, username});
         } else {
-            const { login_success } = this.props.loginStatus;
-            const { username } = login_success ?  this.props.loginStatus : this.props.createStatus;
+            const { login_success, username } = this.props.loginStatus;
+            this.backToLogin(login_success);
             localStorage.setItem(HOMEPAGE_LOCAL_STORAGE, JSON.stringify({login_success, username}));
             this.setState({login_success, username});
         }
@@ -35,11 +39,7 @@ class HomePage extends Component {
             <div className="homepage">
                 <div>Welcome to Home Page,<span className="homepage-user"> {username} </span></div>
                 <div>
-                    <button type="submit" className="btn btn-logout"
-                            onClick={() => {
-                                localStorage.removeItem(HOMEPAGE_LOCAL_STORAGE);
-                                userLogout();
-                            }}>
+                    <button type="submit" className="btn btn-logout" onClick={userLogout}>
                         Log Out
                     </button>
                 </div>
@@ -49,15 +49,12 @@ class HomePage extends Component {
 
     componentDidUpdate() {
         const { login_success } = this.props.loginStatus;
-        const { create_success } = this.props.createStatus;
-        if (login_success !== true && create_success !== true){
-            browserHistory.push('/login');
-        }
+        this.backToLogin(login_success);
     }
 }
 
-function mapStateToProps({ loginStatus, createStatus }) {
-    return { loginStatus, createStatus }
+function mapStateToProps({ loginStatus }) {
+    return { loginStatus }
 }
 
 export default connect(mapStateToProps, { userLogout })(HomePage);

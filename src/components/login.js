@@ -33,6 +33,7 @@ class Login extends Component {
     }
 
     render() {
+        localStorage.clear(); // clear all localStorage whenever visiting here
         const handleSubmit = this.props.handleSubmit;
         const { fields: { username, password }, userLogin } = this.props;
         const { login_success } = this.props.loginStatus;
@@ -98,7 +99,7 @@ function validate(values) {
     return errors
 }
 
-function mapStateToProps({ loginStatus}) {
+function mapStateToProps({ loginStatus }) {
     return { loginStatus }
 }
 
