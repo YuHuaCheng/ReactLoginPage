@@ -5,6 +5,11 @@ const INITIAL_STATE = {
     username: null
 };
 
+const LOGOUT_STATE = {
+    login_success: null,
+    username: ''
+};
+
 export default function (state = INITIAL_STATE, action) {
     switch (action.type){
         case USER_LOGIN:
@@ -13,7 +18,7 @@ export default function (state = INITIAL_STATE, action) {
                 username: action.payload.data.username
             };
         case USER_LOGOUT:
-            return INITIAL_STATE;
+            return LOGOUT_STATE;
         default:
             return state
     }

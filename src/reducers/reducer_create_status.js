@@ -6,6 +6,12 @@ const INITIAL_STATE = {
     message: ''
 };
 
+const LOGOUT_STATE = {
+    create_success: null,
+    username: '',
+    message: ''
+};
+
 export default function (state = INITIAL_STATE, action) {
     switch (action.type){
         case USER_CREATE:
@@ -15,7 +21,7 @@ export default function (state = INITIAL_STATE, action) {
                 message: action.payload.data.message
             };
         case USER_LOGOUT:
-            return INITIAL_STATE;
+            return LOGOUT_STATE;
         default:
             return state
     }
