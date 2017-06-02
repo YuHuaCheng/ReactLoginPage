@@ -1,3 +1,8 @@
+.container {
+    /*background-color: #f9886c;*/
+    /*width: 100%;*/
+    /*max-width: 100% !important;*/
+}
 
 form h3 {
     margin-bottom: 40px;
@@ -5,9 +10,13 @@ form h3 {
 
 .form-center {
     text-align: center;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    /*border: solid 2px lightgray;*/
+    border-radius: 8px;
     width: 50%;
-    padding-top: 150px;
+    padding-top: 30px;
 }
 
 .div-login {
@@ -29,12 +38,21 @@ form h3 {
     background-color: rgba(138, 43, 226, 0.6);
     color: #fff;
     margin-bottom: 25px;
-    margin-right: 10px;
     margin-left: 30px;
 }
 
 .btn-login:hover {
     background-color: rgba(138, 43, 226, 0.9);
+}
+
+.btn-logout {
+    background-color: rgba(20, 92, 226, 0.8);
+    color: #fff;
+    margin-top: 20px;
+}
+
+.btn-logout:hover {
+    background-color: rgba(20, 92, 226, 1.0);
 }
 
 .btn-new-user {
@@ -44,9 +62,6 @@ form h3 {
     background-color: white;
 }
 
-.btn-new-user:hover {
-    color: rgba(0, 116, 217, 1.0);
-}
 
 .btn-new-user:focus {
     outline:none !important;
@@ -76,7 +91,30 @@ form h3 {
 }
 
 .div-message {
-    margin-top: 15px;
-    margin-left: 25px;
-    color: #ff2121;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin-top: 25px;
+    line-height: 35px;
+}
+
+.message-title {
+    font-size: 25px;
+    margin-top: 20px;
+    color: #e21437;
+}
+
+.btn-new-user-message {
+    color: rgba(0, 116, 217, 0.8);
+    background-color: white;
+}
+
+.message-username {
+    font-weight: bold;
+}
+
+.btn-message-close {
+    background-color: #e21437;
+    color: white;
+    border-radius: 12px !important;
+    margin-left: 5px;
+    margin-top: 5px;
 }

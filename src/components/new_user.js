@@ -1,28 +1,40 @@
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
-import { userCreate } from '../actions/index';
-import { browserHistory } from 'react-router'
+import { browserHistory, Link } from 'react-router'
+
+import { userCreate, toggleMessage } from '../actions/index';
+import MessagePopup from './message';
 
 class NewUser extends Component {
 
-    createMessage(createStatus, message){
-        if (createStatus === null){
-            return null
-        }
-        return createStatus ? null : <h3>{message}</h3>;
+    componentWillMount() {
+        const { toggleMessage } = this.props;
+        toggleMessage(false) // by default turn off the message pop up
     }
 
     componentWillUpdate() {
-        const { create_success } = this.props.createStatus;
-        if (create_success){
+        const { login_success } = this.props.loginStatus;
+        if (login_success){
             browserHistory.push('/home');
+        }
+
+        const { submitting, toggleMessage } = this.props;
+        if (submitting && login_success === false){
+            toggleMessage(true)
         }
     }
 
     render() {
+        localStorage.clear(); // clear all localStorage whenever visiting here
         const handleSubmit = this.props.handleSubmit;
         const { fields: { username, password, reType }, userCreate } = this.props;
-        const { create_success, message } = this.props.createStatus;
+        const { login_success } = this.props.loginStatus;
+
+        const message = login_success ? '' :
+            <p>
+                Oops! Username <span className="message-username">{username.value}</span> has existed. <br/>
+                Please come up with a different one.
+            </p>;
 
         return (
             <form className="form-center" onSubmit={handleSubmit(userCreate)}>
@@ -31,6 +43,9 @@ class NewUser extends Component {
                 <div className="div-login">
                     <label>Username</label>
                     <input type="text" className="form-login" {...username} />
+                    <div className="text-help">
+                        {username.touched ? username.error : ''}
+                    </div>
                 </div>
 
                 <div className="div-login">
@@ -51,12 +66,12 @@ class NewUser extends Component {
 
                 <div className="div-button">
                     <button type="submit" className="btn btn-login">Submit</button>
+                    <Link to="/login" className="btn btn-new-user">Have an account?</Link>
                 </div>
 
                 <div>
-                    {this.createMessage(create_success, message)}
+                    <MessagePopup message={message}/>
                 </div>
-
             </form>
         )
 
@@ -65,6 +80,10 @@ class NewUser extends Component {
 
 function validate(values) {
     const errors = {};
+    if (!values.username){
+        errors.username = 'Please specify a username.'
+    }
+
     if (!values.password){
         errors.password = 'Please specify the password.'
     }
@@ -78,8 +97,8 @@ function validate(values) {
     return errors
 }
 
-function mapStateToProps({ createStatus }) {
-    return { createStatus }
+function mapStateToProps({ loginStatus }) {
+    return { loginStatus }
 }
 
 export default reduxForm({ // inject this object as props to Login component
@@ -87,4 +106,4 @@ export default reduxForm({ // inject this object as props to Login component
     fields: ['username', 'password', 'reType'],
     touchOnBlur: false,
     validate: validate
-}, mapStateToProps, { userCreate })(NewUser);
+}, mapStateToProps, { userCreate, toggleMessage })(NewUser);
