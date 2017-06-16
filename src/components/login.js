@@ -28,10 +28,6 @@ class Login extends Component {
         }
     }
 
-    componentDidUpdate() {
-        this.props.fetchingData(false);
-    }
-
     render() {
         localStorage.clear(); // clear all localStorage whenever visiting here
         const handleSubmit = this.props.handleSubmit;
@@ -79,7 +75,10 @@ class Login extends Component {
                 </div>
             </form>
         )
+    }
 
+    componentDidUpdate() {
+        this.props.fetchingData(false);
     }
 }
 
